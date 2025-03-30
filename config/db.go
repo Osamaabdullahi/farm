@@ -14,13 +14,17 @@ import (
 var DB *gorm.DB
 
 func InitDB() {
-	// Load environment variables from .env file
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatalf("Error loading .env file")
+		log.Println("No .env file found. Using system environment variables.")
 	}
 
-	dsn:=os.Getenv("DATABASE")
+	// Retrieve DATABASE from environment (Render provides this)
+	dsn := os.Getenv("DATABASE")
+	if dsn == "" {
+		log.Fatal("DATABASE environment variable is not set!")
+	}
+	
 	// Initialize the database
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
