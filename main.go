@@ -14,7 +14,7 @@ func main() {
 
 	// CORS Middleware
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000","http://localhost:3001","https://farmconnect.vercel.app/"}, // Change to your frontend URL
+		AllowOrigins:     []string{"https://farmconnect-dusky.vercel.app","http://localhost:3001","https://farmconnect.vercel.app/"}, // Change to your frontend URL
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
 		AllowHeaders:     []string{"Content-Type", "Authorization"},
 		AllowCredentials: true,
